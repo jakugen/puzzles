@@ -55,8 +55,8 @@ export default {
   },
   methods: {
     next(){
-      console.log(this.getRandomInt(26));
-      this.fen = this.fens["iva_b1"][this.getRandomInt(26)]
+      var rndFen = this.getRandomInt(this.fens["iva_b1"].length);
+      this.fen = this.fens["iva_b1"][rndFen]
     },
     getRandomInt(max) {
       return Math.floor(Math.random() * max);
