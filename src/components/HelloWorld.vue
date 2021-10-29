@@ -45,7 +45,6 @@ export default {
   },
   mounted() {
     this.fens = getFens()
-    console.log(this.fens);
   },
   data() {
     return {

@@ -1,5 +1,4 @@
 const getFens = () => {
-  console.log('get fens');
   return {
     "iva_b1": [
       "3rkr2/1p3p1p/p5p1/2p1N2n/q7/3P4/P1PQ1PPP/R3R1K1 w - - 0 1",
