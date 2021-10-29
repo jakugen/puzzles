@@ -4,6 +4,7 @@
 
 <script>
 import { Chessground } from 'chessground'
+import Chess from 'chess.js'
 
 
 
@@ -21,19 +22,35 @@ export default {
   methods: {
     initBoard() {
       this.board = Chessground(this.$refs.board, {
-        fen: this.fen
+        fen: this.fen,
+        movable: {
+          events:  { after: this.changeTurn() }
+        },
       });
+    },
+    initGame() {
+      this.game = new Chess()
+    },
+    toColor() {
+      return (this.game.turn() === 'w') ? 'white' : 'black'
+    },
+    changeTurn() {
+      return (orig, dest, metadata) => {
+        console.log('changeTurn')
 
-      console.log(this.board)
-    },
-    toColor () {
-      return 'white'
-    },
-    changeTurn () {
-      console.log('changeTurn')
+        this.game.move({from: orig, to: dest, promotion: 'q'})
+        this.board.set({
+          fen: this.game.fen(),
+          turnColor: this.toColor(),
+          movable: {
+            color: this.toColor(),
+          },
+        })
+      }      
     },
   },
   mounted() {
+    this.initGame()
     this.initBoard()
   },
   created() {
@@ -44,6 +61,9 @@ export default {
       this.board.set({
          fen: newval
        })
+      this.game.load(newval)
+
+      console.log(this.game.ascii());
     }
   }
 }

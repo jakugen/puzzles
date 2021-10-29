@@ -10,6 +10,7 @@
   "dependencies": {
     "bootstrap": "^5.0.1",
     "bootstrap-vue": "^2.1.0",
+    "chess.js": "^0.12.0",
     "chessground": "^7.12.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
