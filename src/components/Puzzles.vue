@@ -36,7 +36,7 @@ import { getFens } from '../fens'
 
 
 export default {
-  name: 'HelloWorld',
+  name: 'Puzzles',
   components: {
     Board
   },
